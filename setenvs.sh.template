@@ -1,0 +1,8 @@
+#!/bin/bash
+export DEBUG=True
+export SECRET_KEY='developer key'
+
+# Twilio credentials
+export TWILIO_ACCOUNT_SID=''
+export TWILIO_AUTH_TOKEN=''
+export TWILIO_NUMBER=''

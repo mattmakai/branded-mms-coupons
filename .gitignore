@@ -1,0 +1,17 @@
+*.egg*
+*.py[co]
+*.swp
+*.swo
+.DS_Store
+*~
+*.db
+*.log
+assets
+tmp/
+setenvs.sh
+deploy/group_vars/
+deploy/fabfile.py
+deploy/hosts
+deploy/ssh_conf/
+deploy/ssl_cert/
+celerybeat-schedule
