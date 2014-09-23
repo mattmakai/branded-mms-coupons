@@ -1,5 +1,6 @@
 import unittest
 
+from coupons import app
 from coupons.utils import _create_background_image, _generate_barcode_image
 
 class TestHelperFuncs(unittest.TestCase):
@@ -26,6 +27,12 @@ class TestHelperFuncs(unittest.TestCase):
             self.assertEqual(img.size[1], 280)
         except Exception as e:
             self.fail(e)
+
+
+    def test_get_upload_image(self):
+        self.test_app = app.test_client()
+        response = self.test_app.get('/')        
+        assertEquals(response.status_code, 200)
 
 
 if __name__ == '__main__':
