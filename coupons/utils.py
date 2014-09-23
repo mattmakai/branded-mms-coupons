@@ -29,14 +29,17 @@ def _generate_barcode_image(serial_number='1234567890'):
 
 
 def _combine_images_into_coupon(logo_img, barcode_img):
-    if logo_img.size[0] > barcode_img.size[0]:
-        bg_width = logo_img.size[0] + extra_spacing
+    bg_width = logo_img.size[0] + barcode_img.size[0] + extra_spacing
+    if logo_img.size[1] > barcode_img.size[1]:
+        bg_height = logo_img.size[1] + extra_spacing
     else:
-        bg_width = barcode_img.size[0] + extra_spacing
-    bg_height = logo_img.size[1] + barcode_img.size[1] + extra_spacing
+        bg_height = barcode_img.size[1] + extra_spacing
     bg_img = _create_background_image(bg_width, bg_height)
-    offset = (extra_spacing / 2, extra_spacing / 2)
-    bg_img.paste(logo_img, offset)
+    logo_offset = (extra_spacing / 2, extra_spacing / 2)
+    bg_img.paste(logo_img, logo_offset, logo_img)
+    barcode_offset = (logo_img.size[0] + \
+                      extra_spacing / 3, extra_spacing / 2)
+    bg_img.paste(barcode_img, barcode_offset)
     return _save_image(bg_img)
 
 
