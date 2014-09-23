@@ -2,11 +2,12 @@ import unittest
 
 from coupons import app
 from coupons.utils import _create_background_image, _generate_barcode_image, \
-                          _open_image_file_from_url
+                          _open_image_file_from_url, \
+                          _send_coupon_via_mms
 
 class TestHelperFuncs(unittest.TestCase):
     def setUp(self):
-        pass
+        self.test_app = app.test_client()
 
     def tearDown(self):
         pass
@@ -39,8 +40,12 @@ class TestHelperFuncs(unittest.TestCase):
             'http://www.fullstackpython.com/theme/img/fsp-logo.ng')
         self.assertFalse(image)
 
+    def test_send_coupon_via_mms(self):
+        # _send_coupon_via_mms(None, "")
+        pass
+
+
     def test_get_upload_image(self):
-        self.test_app = app.test_client()
         response = self.test_app.get('/')        
         self.assertEqual(response.status_code, 200)
 
