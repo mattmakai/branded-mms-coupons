@@ -1,7 +1,8 @@
 import unittest
 
 from coupons import app
-from coupons.utils import _create_background_image, _generate_barcode_image
+from coupons.utils import _create_background_image, _generate_barcode_image, \
+                          _open_image_file_from_url
 
 class TestHelperFuncs(unittest.TestCase):
     def setUp(self):
@@ -28,6 +29,10 @@ class TestHelperFuncs(unittest.TestCase):
         except Exception as e:
             self.fail(e)
 
+    def test_open_image_file_from_url(self):
+        image = _open_image_file_from_url( \
+            'http://www.fullstackpython.com/theme/img/fsp-logo.png')
+        self.assertIsNot(image, False)
 
     def test_get_upload_image(self):
         self.test_app = app.test_client()
