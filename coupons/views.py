@@ -19,5 +19,5 @@ def create_image():
         # phone_number = request.POST.get('phone_number', '')
         bg_img = _create_background_image()
         barcode_img = _generate_barcode_image(serial_number)
-    render_template('create_coupon.html')
+    return render_template('create_coupon.html', form=form)
 

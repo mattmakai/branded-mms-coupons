@@ -32,7 +32,7 @@ class TestHelperFuncs(unittest.TestCase):
     def test_get_upload_image(self):
         self.test_app = app.test_client()
         response = self.test_app.get('/')        
-        assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':
