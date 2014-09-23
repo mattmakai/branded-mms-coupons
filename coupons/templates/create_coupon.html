@@ -2,22 +2,15 @@
 
 {% block content %}
       <div>
-        <h3>Create a coupon</h3>
+        <h3>Create and send a coupon via MMS</h3>
         {% from "_formhelpers.html" import render_field %}
         <form action="/" method="post">
             {{ form.csrf_token }}
+            {{ render_field(form.phone_number) }}
             {{ render_field(form.serial_number) }}
+            {{ render_field(form.logo_image_url) }}
         <br>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Upload</a></p>
+        <input type="submit" class="btn btn-log btn-success" value="Create & Send Coupon"></input>
         </form>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-8">
-          <h3>Instructions</h3>
-          <ol style="text-align: left;">
-              <li>Upload an image for the coupon's logo.</li>
-          </ol>
-        </div>
       </div>
 {% endblock %}

@@ -33,6 +33,11 @@ class TestHelperFuncs(unittest.TestCase):
         image = _open_image_file_from_url( \
             'http://www.fullstackpython.com/theme/img/fsp-logo.png')
         self.assertIsNot(image, False)
+    
+    def test_open_image_file_from_url_incorrect_url(self):
+        image = _open_image_file_from_url( \
+            'http://www.fullstackpython.com/theme/img/fsp-logo.ng')
+        self.assertFalse(image)
 
     def test_get_upload_image(self):
         self.test_app = app.test_client()

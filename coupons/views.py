@@ -4,6 +4,8 @@ from . import app
 from .forms import CouponForm
 from .utils import _create_background_image, _generate_barcode_image
 
+twilio_logo_png_url = 'http://www.twilio.com/packages/company/' + \
+                      'img/logos_downloadable_logobrand.png'
 
 @app.route('/', methods=['GET', 'POST'])
 def create_image():
@@ -13,6 +15,8 @@ def create_image():
         phone_number = form.phone_number.data
         logo_image_url = form.logo_image_url.data
         logo_img = _open_image_url(logo_image_url)
+        if not logo_img:
+            logo_img = _open_image_url(twilio_logo_png_url)
         bg_img = _create_background_image()
         barcode_img = _generate_barcode_image(serial_number)
         finished_coupon = _combine_images_into_coupon(bg_img, logo_img, 
