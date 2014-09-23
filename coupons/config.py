@@ -20,6 +20,7 @@ def get_env_setting(setting):
 # General Flask app settings
 DEBUG = get_env_setting('DEBUG')
 SECRET_KEY = get_env_setting('SECRET_KEY')
+COUPON_SAVE_DIR = get_env_setting('COUPON_SAVE_DIR')
 
 # Twilio API credentials
 TWILIO_ACCOUNT_SID = get_env_setting('TWILIO_ACCOUNT_SID')

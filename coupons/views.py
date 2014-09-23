@@ -3,7 +3,8 @@ from flask import request, render_template, jsonify, redirect
 from . import app
 from .forms import CouponForm
 from .utils import _create_background_image, _generate_barcode_image, \
-                   _open_image_file_from_url, _send_coupon_via_mms
+                   _combine_images_into_coupon, _open_image_file_from_url, \
+                   _send_coupon_via_mms
 
 twilio_logo_png_url = 'http://www.twilio.com/packages/company/' + \
                       'img/logos_downloadable_logobrand.png'
@@ -18,14 +19,12 @@ def create_image():
         logo_img = _open_image_file_from_url(logo_image_url)
         if not logo_img:
             logo_img = _open_image_file_from_url(twilio_logo_png_url)
-        bg_img = _create_background_image()
         if serial_number:
             barcode_img = _generate_barcode_image(serial_number)
         else:
             barcode_img = _generate_barcode_image()
-        finished_coupon = _combine_images_into_coupon(bg_img, logo_img, 
-                                                      barcode_img)
-        _send_coupon_via_mms(finished_coupon, phone_number)        
+        coupon_url = _combine_images_into_coupon(logo_img, barcode_img)
+        _send_coupon_via_mms(coupon_url, phone_number)        
         redirect(url_for('coupon_confirmation'))
     return render_template('create_coupon.html', form=form)
 
