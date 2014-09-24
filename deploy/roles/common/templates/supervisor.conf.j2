@@ -1,7 +1,7 @@
 [program:{{app_name}}]
 environment={% for k, v in wsgi_env_vars.iteritems() %}{% if not loop.first %},{% endif %}{{ k }}="{{ v }}"{% endfor %}
 
-command={{virtualenv_dir}}/bin/python manage.py runserver
+command={{virtualenv_dir}}/bin/python {{app_code_dir}}/manage.py runserver
 directory={{app_code_dir}}
 user={{deploy_user}}
 autostart=true

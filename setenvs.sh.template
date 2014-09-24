@@ -2,7 +2,6 @@
 export DEBUG=True
 export SECRET_KEY='developer key'
 export COUPON_SAVE_DIR=''
-export COUPON_IMAGES_URL=''
 
 # Twilio credentials
 export TWILIO_ACCOUNT_SID=''
