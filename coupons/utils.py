@@ -36,7 +36,12 @@ def _combine_images_into_coupon(logo_img, barcode_img):
         bg_height = barcode_img.size[1] + extra_spacing
     bg_img = _create_background_image(bg_width, bg_height)
     logo_offset = (extra_spacing / 2, extra_spacing / 2)
-    bg_img.paste(logo_img, logo_offset, logo_img)
+    try:
+        bg_img.paste(logo_img, logo_offset, logo_img)
+    except:
+        # try with the mask
+        bg_img.paste(logo_img, logo_offset)
+
     barcode_offset = (logo_img.size[0] + \
                       extra_spacing / 3, extra_spacing / 2)
     bg_img.paste(barcode_img, barcode_offset)
