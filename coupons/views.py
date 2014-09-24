@@ -24,7 +24,7 @@ def create_image():
         else:
             barcode_img = _generate_barcode_image()
         coupon_url = _combine_images_into_coupon(logo_img, barcode_img)
-        #_send_coupon_via_mms(coupon_url, phone_number)        
+        _send_coupon_via_mms(coupon_url, phone_number)        
         redirect(url_for('coupon_confirmation'))
     return render_template('create_coupon.html', form=form)
 
