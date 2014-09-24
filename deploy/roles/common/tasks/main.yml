@@ -11,6 +11,8 @@
     - fail2ban
     - git
     - python-dev
+    - python-imaging
+    - libjpeg8-dev
     - python-virtualenv
     - supervisor
 
@@ -50,4 +52,5 @@
 
 - name: notify deployer that the application is ready to roll
   local_action: twilio account_sid={{twilio_account_sid}}
-  
+                auth_token={{twilio_auth_token}} from_number={{twilio_number}}
+                to_number={{deploy_alert_number}} 
