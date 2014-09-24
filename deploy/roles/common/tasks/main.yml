@@ -55,3 +55,4 @@
   local_action: twilio account_sid={{twilio_account_sid}}
                 auth_token={{twilio_auth_token}} from_number={{twilio_number}}
                 to_number={{deploy_alert_number}} 
+                msg="MMS coupons deployment complete!"
