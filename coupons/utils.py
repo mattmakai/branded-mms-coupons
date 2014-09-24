@@ -45,7 +45,7 @@ def _combine_images_into_coupon(logo_img, barcode_img):
 
 def _save_image(image):
     unique_filename = str(uuid.uuid4()) + '.png'
-    image.save(COUPON_SAVE_DIR + unique_filename_full_path)
+    image.save(COUPON_SAVE_DIR + unique_filename)
     return unique_filename
 
 def _send_coupon_via_mms(finished_coupon_url, recipient_number, 
