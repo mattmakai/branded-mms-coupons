@@ -48,8 +48,10 @@ def _save_image(image):
     image.save(COUPON_SAVE_DIR + unique_filename)
     return unique_filename
 
-def _send_coupon_via_mms(finished_coupon_url, recipient_number, 
+def _send_coupon_via_mms(coupon_filename, recipient_number, 
                          msg_text="Scan me!"):
     to_number = "+1" + recipient_number
+    media_url = QUALIFIED_MEDIA_URL + coupon_filename
+    print media_url
     client.messages.create(to=to_number, from_=TWILIO_NUMBER, 
-        body=msg_text, media_url=(QUALIFIED_MEDIA_URL + finished_coupon_url))
+        body=msg_text, media_url=media_url)
