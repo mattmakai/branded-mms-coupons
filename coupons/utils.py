@@ -6,7 +6,7 @@ from PIL import Image
 from StringIO import StringIO
 from twilio.rest import TwilioRestClient
 
-from config import TWILIO_NUMBER, COUPON_SAVE_DIR
+from config import TWILIO_NUMBER, COUPON_SAVE_DIR, QUALIFIED_MEDIA_URL
 
 client = TwilioRestClient()
 extra_spacing = 50
@@ -44,12 +44,12 @@ def _combine_images_into_coupon(logo_img, barcode_img):
 
 
 def _save_image(image):
-    unique_filename_full_path = COUPON_SAVE_DIR + str(uuid.uuid4()) + '.png'
-    image.save(unique_filename_full_path)
-    return unique_filename_full_path
+    unique_filename = str(uuid.uuid4()) + '.png'
+    image.save(COUPON_SAVE_DIR + unique_filename_full_path)
+    return unique_filename
 
 def _send_coupon_via_mms(finished_coupon_url, recipient_number, 
                          msg_text="Scan me!"):
     to_number = "+1" + recipient_number
     client.messages.create(to=to_number, from_=TWILIO_NUMBER, 
-        body=msg_text, media_url=finished_coupon_url)
+        body=msg_text, media_url=(QUALIFIED_MEDIA_URL + finished_coupon_url))
