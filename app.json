@@ -15,7 +15,7 @@
     },
     "COUPON_SAVE_DIR": {
       "description": "A place where images are temporarily stored. The default should work fine on Heroku.",
-      "value": "/app/static/img/"
+      "value": "/app/coupons/static/img/"
     },
     "QUALIFIED_MEDIA_URL": {
       "description": "The URL for the temporary coupon image. Example: http://obscure-anchorage-134.herokuapp.com/static/img/"
