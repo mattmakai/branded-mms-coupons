@@ -10,7 +10,7 @@
       "generator": "secret"
     },
     "DEBUG": {
-      "description": "Your Twilio account id",
+      "description": "True or False to run Flask in debug mode",
       "value": "False"
     },
     "COUPON_SAVE_DIR": {
