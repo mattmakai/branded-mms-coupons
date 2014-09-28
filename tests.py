@@ -39,11 +39,6 @@ class TestCoupons(unittest.TestCase):
             'http://www.fullstackpython.com/theme/img/fsp-logo.ng')
         self.assertFalse(image)
 
-    def test_send_coupon_via_mms(self):
-        # _send_coupon_via_mms(None, "")
-        pass
-
-
     def test_get_upload_image(self):
         response = self.test_app.get('/')
         self.assertEqual(response.status_code, 200)
