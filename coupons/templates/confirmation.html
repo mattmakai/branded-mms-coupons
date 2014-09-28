@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div>
+        <h2 style="color: green;">Your coupon has been created 
+            and is on its way! Create another?</h2>
+        <h3>Create and send a coupon via MMS</h3>
+        {% from "_formhelpers.html" import render_field %}
+        <form action="/" method="post">
+            {{ form.csrf_token }}
+            {{ render_field(form.phone_number) }}
+            {{ render_field(form.logo_image_url) }}
+            {{ render_field(form.coupon_text) }}
+            {{ render_field(form.serial_number) }}
+        <br>
+        <input type="submit" class="btn btn-log btn-success" value="Create & Send Coupon"></input>
+        </form>
+      </div>
+{% endblock %}

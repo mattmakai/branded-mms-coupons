@@ -1,4 +1,5 @@
-from flask import request, render_template, jsonify, redirect, url_for
+from flask import request, render_template, jsonify, redirect, \
+                  url_for
 
 from . import app
 from .forms import CouponForm
@@ -26,10 +27,11 @@ def create_image():
             barcode_img = _generate_barcode_image()
         coupon_url = _combine_images_into_coupon(logo_img, barcode_img)
         _send_coupon_via_mms(coupon_url, phone_number, coupon_text)
-        redirect(url_for('coupon_confirmation'))
+        return redirect(url_for('coupon_confirmation'))
     return render_template('create_coupon.html', form=form)
 
 
 @app.route('/confirmation/', methods=['GET'])
 def coupon_confirmation():
-    return render_template('confirmation.html')
+    form = CouponForm()
+    return render_template('confirmation.html', form=form)
