@@ -1,0 +1,2 @@
+ansible==1.7.1
+fabric==1.10.0
