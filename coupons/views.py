@@ -11,7 +11,7 @@ twilio_logo_png_url = 'http://www.twilio.com/packages/company/' + \
                       'img/logos_downloadable_logobrand.png'
 
 @app.route('/', methods=['GET', 'POST'])
-def create_image():
+def create_coupon():
     form = CouponForm()
     if form.validate_on_submit():
         serial_number = form.serial_number.data
