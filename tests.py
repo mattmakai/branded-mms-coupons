@@ -33,7 +33,7 @@ class TestCoupons(unittest.TestCase):
         image = _open_image_file_from_url( \
             'http://www.fullstackpython.com/theme/img/fsp-logo.png')
         self.assertIsNot(image, False)
-    
+
     def test_open_image_file_from_url_incorrect_url(self):
         image = _open_image_file_from_url( \
             'http://www.fullstackpython.com/theme/img/fsp-logo.ng')
@@ -45,11 +45,10 @@ class TestCoupons(unittest.TestCase):
 
 
     def test_get_upload_image(self):
-        response = self.test_app.get('/')        
+        response = self.test_app.get('/')
         self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(TestCoupons)
     unittest.TextTestRunner().run(suite)
-
