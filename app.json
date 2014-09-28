@@ -19,7 +19,6 @@
     },
     "QUALIFIED_MEDIA_URL": {
       "description": "The URL for the temporary coupon image. Example: http://obscure-anchorage-134.herokuapp.com/static/img/",
-      "value": 
     },
     "TWILIO_ACCOUNT_SID": {
       "description": "Your Twilio account id"
