@@ -8,7 +8,7 @@ class CouponForm(Form):
     coupon_text = TextField('Coupon Text (optional, ' + \
         'example: Scan me for 20% off!)')
     serial_number = TextField('Serial Number (optional, ' + \
-        'example: 12849480412)', validators=[validators.regexp(u'[0-9]+')])
+        'example: 12849480412)', validators=[validators.regexp(u'[0-9]*')])
     def validate(self):
         if not Form.validate(self):
             return False
