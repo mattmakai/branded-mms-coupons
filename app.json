@@ -27,7 +27,7 @@
       "description": "Your Twilio authentication token"
     },
     "TWILIO_NUMBER": {
-      "description": "US Twilio number for MMS"
+      "description": "US Twilio number for MMS. Format: +12025551234"
     }
   }
 }
