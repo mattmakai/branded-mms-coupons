@@ -2,9 +2,9 @@
 <div style="margin-top: 20px;">
     <dt>{{ field.label }}
     {% if field.errors %}
-        <ul class=errors>
+        <ul> 
             {% for error in field.errors %}
-                <li>{{ error }}</li>
+                <li style="color: red;">{{ error }}</li>
             {% endfor %}
         </ul>
     {% endif %}

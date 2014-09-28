@@ -5,9 +5,10 @@ class CouponForm(Form):
     phone_number = TextField('Recipient US Phone Number (ex: 2025551234)', 
         validators=[validators.Required(), validators.regexp(u'[0-9]+')])
     logo_image_url = TextField('Logo Image URL (optional, .png file)')
+    coupon_text = TextField('Coupon Text (optional, ' + \
+        'example: Scan me for 20% off!)')
     serial_number = TextField('Serial Number (optional, ' + \
-        'example: 12849480412)')
-
+        'example: 12849480412)', validators=[validators.regexp(u'[0-9]+')])
     def validate(self):
         if not Form.validate(self):
             return False

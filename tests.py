@@ -5,7 +5,7 @@ from coupons.utils import _create_background_image, _generate_barcode_image, \
                           _open_image_file_from_url, \
                           _send_coupon_via_mms
 
-class TestHelperFuncs(unittest.TestCase):
+class TestCoupons(unittest.TestCase):
     def setUp(self):
         self.test_app = app.test_client()
 
@@ -24,9 +24,8 @@ class TestHelperFuncs(unittest.TestCase):
     def test_generate_barcode_image(self):
         try:
             barcode = _generate_barcode_image('567890')
-            img = barcode.render()
-            self.assertEqual(img.size[0], 360)
-            self.assertEqual(img.size[1], 280)
+            self.assertEqual(barcode.size[0], 360)
+            self.assertEqual(barcode.size[1], 280)
         except Exception as e:
             self.fail(e)
 
@@ -51,6 +50,6 @@ class TestHelperFuncs(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(TestHelperFuncs)
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(TestCoupons)
     unittest.TextTestRunner().run(suite)
 

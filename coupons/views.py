@@ -16,6 +16,7 @@ def create_image():
         serial_number = form.serial_number.data
         phone_number = form.phone_number.data
         logo_image_url = form.logo_image_url.data
+        coupon_text = form.coupon_text.data
         logo_img = _open_image_file_from_url(logo_image_url)
         if not logo_img:
             logo_img = _open_image_file_from_url(twilio_logo_png_url)
@@ -24,7 +25,7 @@ def create_image():
         else:
             barcode_img = _generate_barcode_image()
         coupon_url = _combine_images_into_coupon(logo_img, barcode_img)
-        _send_coupon_via_mms(coupon_url, phone_number)        
+        _send_coupon_via_mms(coupon_url, phone_number, coupon_text)
         redirect(url_for('coupon_confirmation'))
     return render_template('create_coupon.html', form=form)
 
