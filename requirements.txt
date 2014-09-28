@@ -14,3 +14,4 @@ requests==2.4.1
 six==1.8.0
 twilio==3.6.7
 wsgiref==0.1.2
+gunicorn==19.1.1
