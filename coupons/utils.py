@@ -11,7 +11,7 @@ from config import TWILIO_NUMBER, COUPON_SAVE_DIR, QUALIFIED_MEDIA_URL
 client = TwilioRestClient()
 extra_spacing = 50
 
-def _open_image_file_from_url(image_file_url):
+def open_image_file_from_url(image_file_url):
     if not image_file_url:
         return False
     image_request = requests.get(image_file_url)
@@ -20,15 +20,15 @@ def _open_image_file_from_url(image_file_url):
     return False
 
 
-def _create_background_image(width=640, height=480, rgb=(255, 255, 255)):
+def create_background_image(width=640, height=480, rgb=(255, 255, 255)):
     return Image.new('RGB', (width, height), rgb)
 
 
-def _generate_barcode_image(serial_number='1234567890'):
+def generate_barcode_image(serial_number='1234567890'):
     return barcode.get('ean13', serial_number, writer=ImageWriter()).render()
 
 
-def _combine_images_into_coupon(logo_img, barcode_img):
+def combine_images_into_coupon(logo_img, barcode_img):
     bg_width = logo_img.size[0] + barcode_img.size[0] + extra_spacing
     if logo_img.size[1] > barcode_img.size[1]:
         bg_height = logo_img.size[1] + extra_spacing
@@ -48,12 +48,12 @@ def _combine_images_into_coupon(logo_img, barcode_img):
     return _save_image(bg_img)
 
 
-def _save_image(image):
+def save_image(image):
     unique_filename = str(uuid.uuid4()) + '.png'
     image.save(COUPON_SAVE_DIR + unique_filename)
     return unique_filename
 
-def _send_coupon_via_mms(coupon_filename, recipient_number, 
+def send_coupon_via_mms(coupon_filename, recipient_number, 
                          msg_text="Scan me for 20% off!"):
     to_number = "+1" + recipient_number
     media_url = QUALIFIED_MEDIA_URL + coupon_filename
