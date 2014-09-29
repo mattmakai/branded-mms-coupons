@@ -1,1 +1,1 @@
-web: gunicorn coupons:app
+web: gunicorn app:app
