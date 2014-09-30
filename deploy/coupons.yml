@@ -1,9 +1,0 @@
----
-# This playbook configures a single server and deploys the MMS coupons 
-# application.
-- name: configure server and deploy coupons application
-  hosts: all
-  user: deployer
-  roles:
-    - common
-
