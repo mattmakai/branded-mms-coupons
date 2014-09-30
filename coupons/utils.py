@@ -45,7 +45,7 @@ def combine_images_into_coupon(logo_img, barcode_img):
     barcode_offset = (logo_img.size[0] + \
                       extra_spacing / 3, extra_spacing / 2)
     bg_img.paste(barcode_img, barcode_offset)
-    return _save_image(bg_img)
+    return save_image(bg_img)
 
 
 def save_image(image):
