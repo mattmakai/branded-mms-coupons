@@ -32,7 +32,7 @@ def combine_images_into_coupon(logo_img, barcode_img):
         bg_height = logo_img.size[1] + extra_spacing
     else:
         bg_height = barcode_img.size[1] + extra_spacing
-    bg_img = _create_background_image(bg_width, bg_height)
+    bg_img = create_background_image(bg_width, bg_height)
     logo_offset = (extra_spacing / 2, extra_spacing / 2)
     try:
         bg_img.paste(logo_img, logo_offset, logo_img)
